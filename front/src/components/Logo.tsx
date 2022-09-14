@@ -1,24 +1,30 @@
 import * as React from "react"
 import {
   chakra,
-  keyframes,
   ImageProps,
   forwardRef,
-  usePrefersReducedMotion,
 } from "@chakra-ui/react"
+import _ from 'lodash';
 import logo from "../assets/logo.svg"
 
-const spin = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`
+type LogoProps = ImageProps & { isSpinning: boolean };
 
-export const Logo = forwardRef<ImageProps, "img">((props, ref) => {
-  const prefersReducedMotion = usePrefersReducedMotion()
+export const Logo = forwardRef<LogoProps, "img">((props, ref) => {
+  const { isSpinning } = props;
 
-  const animation = prefersReducedMotion
-    ? undefined
-    : `${spin} infinite 20s linear`
-
-  return <chakra.img animation={animation} src={logo} ref={ref} aria-label="Logo" {...props} />
+  return (
+    <chakra.img
+      style={isSpinning ? styles.spinning : undefined}
+      src={logo}
+      ref={ref}
+      aria-label={isSpinning ? 'Spinning logo' : 'Logo'}
+      { ..._.omit(props, 'isSpinning') }
+    />)
 })
+
+const styles = {
+  spinning: {
+    transform: 'rotate(1080deg)',
+    transition: 'transform 2.5s ease-in',
+  },
+};

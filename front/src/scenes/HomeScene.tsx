@@ -1,23 +1,18 @@
 import * as React from "react"
-import { Text, Link, VStack, Code } from "@chakra-ui/react"
+import { Button, VStack } from "@chakra-ui/react"
 import { Logo } from "../components/Logo"
 
 export const HomeScene = () => {
+  const [isLogoSpinning, spinLogo] = React.useState(false);
+
+  const onButtonClick = () => spinLogo(!isLogoSpinning);
+
   return (
-    <VStack data-testid="HomeScene" spacing={8}>
-      <Logo h="40vmin" pointerEvents="none" />
-      <Text>
-        Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-      </Text>
-      <Link
-        color="teal.500"
-        href="https://chakra-ui.com"
-        fontSize="2xl"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn Chakra
-      </Link>
+    <VStack data-testid="HomeScene" spacing={20} pb={20}>
+      <Logo h="40vmin" isSpinning={isLogoSpinning} pointerEvents="none" />
+      <Button onClick={onButtonClick} size="lg" colorScheme="purple" color="white">
+        Onde comer?
+      </Button>
     </VStack>
   )
 }
