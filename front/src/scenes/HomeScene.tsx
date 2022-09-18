@@ -8,7 +8,7 @@ export const HomeScene = () => {
   const onButtonClick = () => spinLogo(!isLogoSpinning);
 
   return (
-    <VStack data-testid="HomeScene" spacing={20} pb={20}>
+    <VStack data-testid="HomeScene" minH="100vh" spacing={20} pt={20}>
       <Logo h="40vmin" isSpinning={isLogoSpinning} pointerEvents="none" />
       <Button onClick={onButtonClick} size="lg" colorScheme="purple" color="white">
         Onde comer?
