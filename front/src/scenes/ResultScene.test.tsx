@@ -7,5 +7,9 @@ test("renders ResultScene", () => {
   render(<ResultScene />)
   const scene = screen.getByTestId('ResultScene')
 
-  expect(scene).toHaveTextContent(/ResultScene/i)
+  expect(scene).toHaveTextContent(/Osteria Itália/i)
+  expect(scene).toHaveTextContent(/Italiana/i)
+  expect(scene).toHaveTextContent(/Horários: ter-sáb das 19h às 23h/i)
+  expect(scene).toHaveTextContent(/Endereço: R. Gen. Osório, 63 - Vila Ema/i)
+  expect(scene).toHaveTextContent(/Telefone: \(12\) 3308-0633/i)
 })
