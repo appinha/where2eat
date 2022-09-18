@@ -1,7 +1,16 @@
 import React from "react"
+import * as router from 'react-router'
 import { screen, fireEvent } from "@testing-library/react"
 import { render } from "../test-utils"
 import { HomeScene } from "./HomeScene"
+
+jest.useFakeTimers();
+
+const navigate = jest.fn()
+
+beforeEach(() => {
+  jest.spyOn(router, 'useNavigate').mockImplementation(() => navigate)
+})
 
 test("renders HomeScene", () => {
   render(<HomeScene />)
@@ -26,4 +35,14 @@ test("logo spins when button is clicked", () => {
   expect(spinningLogo).toBeInTheDocument()
   expect(spinningLogo).toHaveStyle(`transform: rotate(1080deg)`)
   expect(spinningLogo).toHaveStyle(`transition: transform 2.5s ease-in`)
+})
+
+test("upon button click, redirects to ResultScene only after logo transition is finished", () => {
+  render(<HomeScene />)
+
+  expect(navigate).not.toHaveBeenCalledWith('/result')
+  fireEvent.click(screen.getByText(/Onde comer?/i))
+  expect(navigate).not.toHaveBeenCalledWith('/result')
+  jest.runAllTimers();
+  expect(navigate).toHaveBeenCalledWith('/result')
 })
