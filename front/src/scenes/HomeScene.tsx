@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, VStack } from "@chakra-ui/react"
+import { Button, Grid, GridItem } from "@chakra-ui/react"
 import { useNavigate } from 'react-router-dom'
 import { Logo } from "../components/Logo"
 
@@ -9,15 +9,19 @@ export const HomeScene = () => {
 
   const onButtonClick = () => {
     spinLogo(!isLogoSpinning);
-    setTimeout(() => navigate('/result'), 2500)
-  };
+    setTimeout(() => navigate('/result'), 2.5 * 1000)
+  }
 
   return (
-    <VStack data-testid="HomeScene" minH="100vh" spacing={20} pt={20}>
-      <Logo h="40vmin" isSpinning={isLogoSpinning} pointerEvents="none" />
-      <Button onClick={onButtonClick} size="lg" colorScheme="purple" color="white">
-        Onde comer?
-      </Button>
-    </VStack>
+    <Grid data-testid="HomeScene" gap={10}>
+      <GridItem>
+        <Logo h="40vmin" isSpinning={isLogoSpinning} pointerEvents="none" />
+      </GridItem>
+      <GridItem>
+          <Button onClick={onButtonClick} size="lg" colorScheme="purple" color="white">
+            Onde comer?
+          </Button>
+      </GridItem>
+    </Grid>
   )
 }
