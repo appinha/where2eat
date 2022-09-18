@@ -1,10 +1,9 @@
-import * as React from "react"
 import {
   chakra,
   ImageProps,
   forwardRef,
 } from "@chakra-ui/react"
-import _ from 'lodash';
+import _ from "lodash";
 import logo from "../assets/logo.svg"
 
 type LogoProps = ImageProps & { isSpinning: boolean };

@@ -5,7 +5,7 @@ import { ResultScene } from "./ResultScene"
 
 test("renders ResultScene", () => {
   render(<ResultScene />)
-  const scene = screen.getAllByTestId('ResultScene')
+  const scene = screen.getByTestId('ResultScene')
 
-  expect(screen.queryByText(/ResultScene/i)).toBeInTheDocument()
+  expect(scene).toHaveTextContent(/ResultScene/i)
 })

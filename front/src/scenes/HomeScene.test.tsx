@@ -1,5 +1,4 @@
-import React from "react"
-import * as router from 'react-router'
+import * as router from "react-router"
 import { screen, fireEvent } from "@testing-library/react"
 import { render } from "../test-utils"
 import { HomeScene } from "./HomeScene"

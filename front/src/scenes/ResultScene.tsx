@@ -1,4 +1,3 @@
-import * as React from "react"
 import { Grid, GridItem, Text } from "@chakra-ui/react"
 
 export const ResultScene = () => {

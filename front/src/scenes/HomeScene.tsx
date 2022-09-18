@@ -1,10 +1,10 @@
-import * as React from "react"
+import { useState } from "react"
 import { Button, Grid, GridItem } from "@chakra-ui/react"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 import { Logo } from "../components/Logo"
 
 export const HomeScene = () => {
-  const [isLogoSpinning, spinLogo] = React.useState(false);
+  const [isLogoSpinning, spinLogo] = useState(false);
   const navigate = useNavigate();
 
   const onButtonClick = () => {
