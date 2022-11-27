@@ -5,3 +5,7 @@ run-front:
 .PHONY: test-front
 test-front:
 	cd front && yarn test
+
+.PHONY: run-back
+run-back:
+	python -m back
