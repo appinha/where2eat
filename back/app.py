@@ -1,15 +1,12 @@
-from flask import jsonify
+from flask import Flask, jsonify
 from flask_cors import CORS
 
-from back import create_app
 
-
-app = create_app()
+app = Flask(__name__)
 CORS(app)
 
-
-@app.route('/', methods=['GET'])
-def index():
+@app.route("/")
+def hello_world():
     return jsonify({
         'name': 'Osteria Itália',
         'category': 'Italiana',
@@ -17,7 +14,3 @@ def index():
         'address': 'R. Gen. Osório, 63 - Vila Ema',
         'phone': '(12) 3308-0633',
     })
-
-
-if __name__ == '__main__':
-    app.run(host='127.0.0.1')
