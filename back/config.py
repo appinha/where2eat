@@ -13,6 +13,7 @@ class BaseConfig:
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
+    SQLALCHEMY_ECHO = False  # change to True to see which queries the ORM is executing on the terminal
 
     db_username = os.getenv("DEV_DATABASE_USERNAME", "wheretoeat")
     db_password = os.getenv("DEV_DATABASE_PASSWORD", "wheretoeat")
