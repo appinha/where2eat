@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from config import config
 
+
 cors = CORS()
 db = SQLAlchemy()
 
@@ -17,15 +18,13 @@ def create_app(config_name):
     cors.init_app(app)
     db.init_app(app)
 
+    from app.models import Restaurant
+
     @app.route("/")
     def hello_world():
-        return jsonify({
-            'name': 'Osteria Itália',
-            'category': 'Italiana',
-            'openingHours': 'ter-sáb das 19h às 23h',
-            'address': 'R. Gen. Osório, 63 - Vila Ema',
-            'phone': '(12) 3308-0633',
-        })
+        restaurant = Restaurant.query.filter_by(name="Osteria Itália").first()
+
+        return jsonify(restaurant.to_dict_json())
 
     return app
 
