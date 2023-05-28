@@ -1,9 +1,7 @@
+from config import config
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
-
-from config import config
-
 
 cors = CORS()
 db = SQLAlchemy()
@@ -27,4 +25,3 @@ def create_app(config_name):
         return jsonify(restaurant.to_dict_json())
 
     return app
-
